@@ -21,7 +21,7 @@
     <div class="col-6">
       <h2>Edit Todo Item</h2>
 
-      <form action="#" th:action="@{/todo{id}(id=${todo.id})}" th:object="${todo}" method="POST">
+      <form class="row g-3" action="#" th:action="@{/todo{id}(id=${todo.id})}" th:object="${todo}" method="POST">
         <div class="form-group">
           <div class="col-6">
             <label for="description">Description</label>
@@ -32,9 +32,22 @@
                    placeholder="Description"
             >
           </div>
+          <div class="col-6 form-check">
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="inputIsComplete"
+                   th:field="*{isComplete}"
+                   th:checked="${isComplete} == true">
+            <label class="form-check-label" for="inputIsComplete">
+              Completed?
+            </label>
+          </div>
+
+          <input type="hidden" th:field="*{createdAt}" />
+          <input type="hidden" th:field="*{updatedAt}" />
 
           <button type="submit" class="btn btn-outline-success">
-            <i class="bi bi-plus-square-fill"></i> Add Todo
+            <i class="bi bi-plus-square-fill"></i> Update
           </button>
 
         </div>
