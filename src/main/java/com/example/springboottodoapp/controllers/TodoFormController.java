@@ -47,7 +47,7 @@ public class TodoFormController {
                 .orElseThrow(() -> new IllegalArgumentException("TodoItem id: "+id+" not found"));
 
         todoItemService.delete(todoItem);
-        return "redirent:/";
+        return "redirect:/";
     }
 
     @PostMapping("/todo/{id}")
