@@ -1,6 +1,7 @@
 package com.example.springboottodoapp.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ public class TodoItem implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Description is required")
     private String description;
 
     private Boolean isComplete;
