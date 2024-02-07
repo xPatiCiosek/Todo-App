@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
 </head>
-<body>
-    <div class="container">
-        <h1>Spring Boot Todo Application</h1>
+
+
+
+
+
+
+<body class="p-3 bg-light">
+    <div class="container-fluid">
+        <h1 class="text-center">Spring Boot Todo Application</h1>
         <hr />
 
-        <table class="table table-bordered table-striped">
-            <thead>
+        <table class="table table-bordered border-dark table-striped table-hover">
+            <thead class="table-dark">
             <tr>
                 <th>Actions</th>
                 <th>Id</th>
@@ -23,12 +29,12 @@
             </tr>
             </thead>
             <tbody>
-                <tr th:each="item : ${todoItems}">
+                <tr class="text-center" th:each="item : ${todoItems}">
                     <td>
-                        <div class="btn btn-group-sm" role="group">
-                            <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">
+                        <div class="btn btn-group-sm d-grid gap-1" role="group">
+                            <a class="btn btn-outline-primary" th:href="@{/edit/{id}(id=${item.id})}">
                                 <i class="bi bi-pencil-fill"></i> Edit</a>
-                            <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">
+                            <a class="btn btn-outline-danger" th:href="@{/delete/{id}(id=${item.id})}">
                                 <i class="bi bi-trash-fill"></i> Delete</a>
                         </div>
                     </td>
@@ -43,7 +49,7 @@
                 </tr>
             </tbody>
         </table>
-        <p><a class="btn btn-outline-success" href="/create-todo">
+        <p><a class="btn btn-outline-success col-12" href="/create-todo">
             <i class="bi bi-plus-square-fill"></i> Create a Todo</a>
         </p>
     </div>
