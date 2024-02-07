@@ -7,56 +7,65 @@
   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
   <title>edit</title>
 </head>
-<body>
-<div class="container">
-  <!--  mt-5 margin top 5px-->
-  <div class="row mt-5">
-    <div class="col-2">
+<body class="p-3 bg-light">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-3">
+  
+        <p><a class="btn btn-outline-dark btn-sm" href="/">
+          <i class="bi bi-arrow-left-square-fill"></i> Back</a>
+        </p>
+  
+      </div>
+      <div class="col-8">
+        <h2 class="text-center mb-4 pe-5">Edit To-do Item</h2>
+  
+        <form class="row g-3" action="#" th:action="@{/todo/{id}(id=${todo.id})}" th:object="${todo}" method="POST">
 
-      <p><a class="btn btn-outline-success" href="/">
-        <i class="bi bi-arrow-left-square-fill"></i> Back</a>
-      </p>
+          <div class="form-group">
+            <div>
+              <!-- <label for="description" class="fw-light ms-5">Item description</label> -->
+              
+              <div class="d-flex flex-row">
+              
+                <div class="form-check ps-0 m-auto">
+                    <input class="btn-check"
+                           type="checkbox"
+                           id="inputIsComplete"
+                           th:field="*{isComplete}"
+                           th:checked="${isComplete} == true"
+                           >
 
-    </div>
-    <!--    what does col-6 do? research-->
-    <div class="col-6">
-      <h2>Edit Todo Item</h2>
+                           <label class="btn btn-outline-success" for="inputIsComplete">✓</label><br>
+                </div>
 
-      <form class="row g-3" action="#" th:action="@{/todo/{id}(id=${todo.id})}" th:object="${todo}" method="POST">
-        <div class="form-group">
-          <div class="col-6">
-            <label for="description">Description</label>
-            <input class="form-control"
-                   type="text"
-                   th:field="*{description}"
-                   id="description"
-                   placeholder="Description"
-            >
+              <input class="form-control border border-dark shadow-sm ms-2"
+                     type="text"
+                     th:field="*{description}"
+                     id="description"
+                     placeholder="Description"
+              >
+              
+              <button type="submit" class="btn btn-outline-success ms-2">
+                <i class="bi bi-plus-square-fill"></i> Update
+              </button>
+
+              </div>
+            </div>
+  
+            <input type="hidden" th:field="*{createdAt}" />
+            <input type="hidden" th:field="*{updatedAt}" />
+  
           </div>
-          <div class="col-6 form-check">
-            <input class="form-check-input"
-                   type="checkbox"
-                   id="inputIsComplete"
-                   th:field="*{isComplete}"
-                   th:checked="${isComplete} == true">
-            <label class="form-check-label" for="inputIsComplete">
-              Completed?
-            </label>
-          </div>
-
-          <input type="hidden" th:field="*{createdAt}" />
-          <input type="hidden" th:field="*{updatedAt}" />
-
-          <button type="submit" class="btn btn-outline-success">
-            <i class="bi bi-plus-square-fill"></i> Update
-          </button>
-
-        </div>
-      </form>
+        </form>
+      </div>
+  
     </div>
-
   </div>
-</div>
+<footer class="bg-dark fixed-bottom text-center">
+    <p class="p-1 text-white fw-light"><small>Designed with Bootstrap</small>
+    </p>
+</footer>
 <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
 </body>
 </html>
